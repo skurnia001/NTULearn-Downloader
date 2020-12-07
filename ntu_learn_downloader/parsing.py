@@ -76,7 +76,13 @@ def __item_to_folder(item):
     folder_name = item.find("h3").text
     details = item.find("div", {"class", "details"})
 
-    dl_links = [a for a in details.find_all("a") if is_download_link(a.get("href"))]
+    try:
+        dl_links = [a for a in details.find_all("a") if is_download_link(a.get("href"))]
+    except Exception as e:
+        print(folder_name)
+        print(details)
+        print(e)
+        dl_links = []
     children = []
     for a_tag in dl_links:
         link, name = a_tag.get("href"), a_tag.text

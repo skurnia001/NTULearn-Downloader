@@ -191,7 +191,10 @@ def get_contents(
 ) -> List[MODEL_TYPES]:
     # NOTE e.g. "course_id": "_306327_1", "content_id": "_1790226_1"
     soup = make_get_contents_request(BbRouter, course_id, content_id)
-    children = [to_model(c) for c in parse_content_page(soup)]
+    try:
+        children = [to_model(c) for c in parse_content_page(soup)]
+    except:
+        children = []
     return children
 
 

@@ -90,6 +90,9 @@ def download_files(
         if filename is None:
             print("Unable to get filename from: {}".format(download_link))
             return
+        if 'mp4' in filename:
+            print(obj)
+            return
         full_file_path = os.path.join(download_path, sanitise_filename(filename))
         # although we get the filename from the download link, some have the same name as in the
         # download link so we can potentially save a network call here

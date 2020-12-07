@@ -128,8 +128,8 @@ def sanitise_filename(value):
     )
     value = re.sub(r"[\\/]", "-", value)
     value = re.sub(r"[^\.()\w\s-]", "", value)
-    value = value.strip("-_")
-    return value
+    value = value.strip("-_ ")
+    return value.strip()
 
 
 def download(
